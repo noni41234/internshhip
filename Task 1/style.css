@@ -1,0 +1,168 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border box;
+}
+.navbar{
+    background-color: rgb(0, 0, 0);
+    border: 2px red;
+    color: aliceblue;
+      
+}
+.navbar-brand{
+    font-size: 2rem;
+    color: rgb(255, 0, 0);
+    border: black;
+    font-family: "Spicy Rice", serif;
+       
+      
+}
+.nav-link active{
+    margin-right: 10px;
+    margin-left: 10px;
+    color: rgb(248, 8, 8);
+    text-transform: uppercase;
+}
+.nav-link active:hover{
+    color: rgb(253, 254, 255);
+}
+.form-control{
+    height: 40px;
+    width: 80%;
+    border-radius: 60px;
+    outline: none;
+    border:2px solid red;
+    margin-right: -35px;
+}
+.btn{
+    height: 40px;
+    width:40%;
+    outline: none;
+    border:none;
+    background: red;
+    color:white;
+    font-weight: 700;
+    border-radius: 60px;
+}
+.main{
+    background: url(https://www.shutterstock.com/image-photo/biryani-rice-indian-meal-chicken-600nw-2468763009.jpg)no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: 50% 50%;
+    width: 100%;
+}
+.main h1{
+    font-size: 4rem;
+    font-weight: 700;
+    font-family: "";
+}
+.btn1{
+    height: 45px;
+    width: 35%;
+    border: none;
+    outline: none;
+    background-color: blue;
+    color: aliceblue;
+    font-weight: 700;
+    border-radius: 50px;
+}
+.btn1:hover{
+    background-color: rgb(241, 97, 8);
+    transition: 0.5s;
+}
+.h1{
+    font-weight: 700;
+}
+.card:hover{
+    box-shadow: -2px 1px 13px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -2px 1px 13px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 1px 13px -3px rgba(0,0,0,0.75);
+transition: 0.5s;
+}
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .product {
+        background-color: black;
+      /* background: url('BB.jpg') no-repeat center center/cover; */
+      color: #fff;
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .product h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .product h6 {
+      font-size: 20px;
+      color: #005c23;
+      background-color: rgba(255, 255, 255, 0.6);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .btn1 {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #e63946;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn1:hover {
+      background-color: #d62828;
+    }
+
+    @media (max-width: 768px) {
+      .product h1 {
+        font-size: 36px;
+      }
+
+      .product h6 {
+        font-size: 16px;
+      }
+    }
+        .footer {
+      background-color: #530000;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 24px;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffcc00;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .social-icons a {
+        margin: 0 10px;
+        font-size: 20px;
+      }
+    }

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu - TastyBite</title>
+  <style>
+    /* --- CSS Styling --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdfcfb;
+    }
+
+    header {
+      background: #ff6347;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    #search {
+      margin-top: 10px;
+      padding: 10px;
+      width: 60%;
+      max-width: 400px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #category-buttons {
+      margin-top: 15px;
+    }
+
+    .category-btn {
+      background: white;
+      color: #ff6347;
+      border: 2px solid #ff6347;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover {
+      background: #ff6347;
+      color: white;
+    }
+
+    #menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 10px;
+      background: url(https://www.shutterstock.com/image-photo/chicken-biryani-shot-on-black-600nw-1836976393.jpg) no-repeat center center/cover;
+    }
+
+   .menu-item {
+  width: 280px;
+  margin: 15px;
+  background: rgba(17, 16, 16, 0); /* Transparent white background */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  color: white; /* Make all text white */
+}
+
+.menu-item:hover {
+  transform: scale(1.03);
+}
+
+.menu-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+
+    .menu-content {
+      padding: 15px;
+    }
+
+    .menu-content h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .menu-content p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 8px 0;
+    }
+
+    .price {
+      color: #e5533d;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .add-to-cart {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #e5533d;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Menu</h1>
+    <div id="category-buttons"></div>
+    <button id="view-cart-btn" style="float: right; margin-right: 20px; padding: 8px 16px; border: none; border-radius: 5px; background-color: white; color: #ff6347; cursor: pointer;">
+  🛒 View Cart (<span id="cart-count">0</span>)
+</button>
+    <center><input type="text" id="search" placeholder="Search food..."></center>
+   
+
+  </header>
+
+  <section id="menu-container">
+     
+  </section>
+
+  <script>
+    // --- JS Data + Logic ---
+const menuItems = [
+  {
+    name: "Veg Biryani",
+    category: "Biryani",
+    price: 180,
+    description: "Aromatic basmati rice with spices and seasonal vegetables.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtnYRlJWKr_BzMiIPS2MkM4f6-neUf3V2Dcg&s"
+  },
+  {
+    name: "Chiken Biriyani",
+    category: "Biryani",
+    price: 280,
+    description: "Authentic Hyderabadi-style chicken biryani with rich spices.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0ntt0om1vOkyvueUClpBxDXv4irKl7keZQg&s"
+  },
+  {
+    name: "Mutton Biryani",
+    category: "Biryani",
+    price: 350,
+    description: "Soft mutton pieces cooked with long grain rice and saffron.",
+    image: "https://media.istockphoto.com/id/1410130688/photo/mutton-biryani-served-in-a-golden-dish-isolated-on-dark-background-side-view-indian-food.jpg?s=612x612&w=0&k=20&c=ueFrghYZuKAty-rFVe5dtMtNIbn0jaUsSvCUwTVOmd8="
+  },
+  {
+    name: "Kolkata Biryani",
+    category: "Biryani",
+    price: 220,
+    description: "Mildly spiced biryani with potatoes, boiled egg, and chicken.",
+    image: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2024/3/29/ee1c7eb9-6ce8-4844-94ba-bb87c2489b56_8c6caaad-43b7-4c79-8ec8-301427bb625e.jpg"
+  },
+  {
+    name: "Egg Biryani",
+    category: "Biryani",
+    price: 160,
+    description: "Flavorful egg biryani with caramelized onions and spices.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUxGx3arVBFJbilcjJflvygQmeSwH-1sFfQQ&s"
+  },
+  {
+    name: "Paneer Biryani",
+    category: "Biryani",
+    price: 190,
+    description: "Cottage cheese chunks cooked with spiced rice and herbs.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz1IGSLdBm8cDq3-cZhTiEbYBN20QvPx16iQ&s"
+  },
+  {
+    name: "Fish Biryani",
+    category: "Biryani",
+    price: 260,
+    description: "Flaky fish fillets cooked with basmati rice and light spices.",
+    image: "https://content3.jdmagicbox.com/comp/kolkata/c5/033pxx33.xx33.190320210707.d8c5/catalogue/ilish-restaurant-truly-bong-park-street-kolkata-home-delivery-restaurants-gga79iio2m.jpg"
+  },
+  {
+    name: "Chiken Chap",
+    category: "Chap",
+    price: 200,
+    description: "",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStffExSMbYE7Oln0zO5KOCXxEF7bkethq3OA&s"
+  },
+  {
+    name: "Dum Biryani",
+    category: "Biryani",
+    price: 240,
+    description: "Slow-cooked biryani layered with meat and saffron rice.",
+    image: "https://source.unsplash.com/400x300/?dum-biryani"
+  },
+  {
+    name: "Keema Biryani",
+    category: "Biryani",
+    price: 230,
+    description: "Minced meat biryani with caramelized onions and green peas.",
+    image: "https://source.unsplash.com/400x300/?keema-biryani"
+  },  
+  {
+    name: "Tandoori Chicken Biryani",
+    category: "Biryani",
+    price: 290,
+    description: "Tandoori grilled chicken pieces mixed with biryani rice.",
+    image: "https://source.unsplash.com/400x300/?tandoori-biryani"
+  },
+  {
+    name: "Lucknowi Biryani",
+    category: "Biryani",
+    price: 270,
+    description: "Delicate and aromatic biryani from Lucknow with tender meat.",
+    image: "https://source.unsplash.com/400x300/?lucknowi-biryani"
+  }
+];
+
+
+    const menuContainer = document.getElementById('menu-container');
+    const searchInput = document.getElementById('search');
+    const categoryButtons = document.getElementById('category-buttons');
+
+    function displayMenu(items) {
+      menuContainer.innerHTML = "";
+      items.forEach(item => {
+        const menuCard = document.createElement('div');
+        menuCard.classList.add('menu-item');
+        menuCard.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="menu-content">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <p class="price">₹${item.price}</p>
+          </div>
+        `;
+        menuContainer.appendChild(menuCard);
+      });
+    }
+
+    function createCategoryButtons() {
+      const categories = ['All', ...new Set(menuItems.map(item => item.category))];
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.textContent = cat;
+        btn.classList.add('category-btn');
+        btn.addEventListener('click', () => {
+          if (cat === 'All') {
+            displayMenu(menuItems);
+          } else {
+            const filtered = menuItems.filter(item => item.category === cat);
+            displayMenu(filtered);
+          }
+        });
+        categoryButtons.appendChild(btn);
+      });
+    }
+
+    searchInput.addEventListener('input', () => {
+      const searchText = searchInput.value.toLowerCase();
+      const filtered = menuItems.filter(item =>
+        item.name.toLowerCase().includes(searchText) ||
+        item.category.toLowerCase().includes(searchText)
+      );
+      displayMenu(filtered);
+    });
+
+    // Initialize
+    createCategoryButtons();
+    displayMenu(menuItems);
+    let cart = [];
+
+function displayMenu(items) {
+  menuContainer.innerHTML = "";
+  items.forEach(item => {
+    const menuCard = document.createElement('div');
+    menuCard.classList.add('menu-item');
+    menuCard.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="menu-content">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <p class="price">₹${item.price}</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    `;
+
+    const addToCartBtn = menuCard.querySelector('.add-to-cart');
+    addToCartBtn.addEventListener('click', () => {
+      cart.push(item);
+      updateCartCount();
+    });
+
+    menuContainer.appendChild(menuCard);
+  });
+}
+
+function updateCartCount() {
+  document.getElementById('cart-count').textContent = cart.length;
+}
+
+document.getElementById('view-cart-btn').addEventListener('click', () => {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let orderSummary = "🛍️ Your Order:\n\n";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    orderSummary += `${index + 1}. ${item.name} - ₹${item.price}\n`;
+    total += item.price;
+  });
+
+  orderSummary += `\nTotal: ₹${total}`;
+  orderSummary += `\n\n✅ Order Placed Successfully!`;
+
+  alert(orderSummary);
+
+  cart = []; // Clear cart
+  updateCartCount();
+});
+
+  </script>
+</body>
+</html>
